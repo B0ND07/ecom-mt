@@ -12,13 +12,11 @@ import Footer from "./components/Footer";
 const Newcontext = createContext();
 function App() {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     axios.get("https://api.escuelajs.co/api/v1/products").then((display) => {
       const slicedProducts = display.data.slice(0, 16);
       setProducts(slicedProducts);
-   
     });
   }, []);
   return (
@@ -31,7 +29,7 @@ function App() {
             <Route path="/view/:index" element={<ProductDetails />}></Route>
             <Route path="/category/:index" element={<CategoryList />}></Route>
             <Route path="/category" element={<Category />}></Route>
-            <Route path="/users" element={<Users/>}></Route>
+            <Route path="/users" element={<Users />}></Route>
           </Routes>
         </BrowserRouter>
         <Footer />

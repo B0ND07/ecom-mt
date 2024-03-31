@@ -1,4 +1,3 @@
-// UserList.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -10,7 +9,6 @@ const Users = () => {
       .get("https://api.escuelajs.co/api/v1/users")
       .then((response) => {
         setUsers(response.data);
-  
       })
       .catch((error) => {
         console.error("Error fetching users:", error);

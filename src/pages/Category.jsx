@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Category = () => {
-  const [products, setfirst] = useState([]);
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     axios.get("https://api.escuelajs.co/api/v1/categories").then((display) => {
      
-      setfirst(display.data);
+    setProducts(display.data);
     });
   }, []);
 
