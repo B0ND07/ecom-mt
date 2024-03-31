@@ -6,7 +6,7 @@ const Category = () => {
   const [products, setfirst] = useState([]);
   useEffect(() => {
     axios.get("https://api.escuelajs.co/api/v1/categories").then((display) => {
-      console.log(display);
+     
       setfirst(display.data);
     });
   }, []);

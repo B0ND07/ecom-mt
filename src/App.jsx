@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductDetails from "./pages/ProductDetails";
 import Category from "./pages/Category";
 import CategoryList from "./pages/CategoryList";
+import Users from "./pages/Users";
+import Footer from "./components/Footer";
 
 const Newcontext = createContext();
 function App() {
@@ -16,18 +18,12 @@ function App() {
     axios.get("https://api.escuelajs.co/api/v1/products").then((display) => {
       const slicedProducts = display.data.slice(0, 16);
       setProducts(slicedProducts);
-      console.log(display);
-    });
-  }, []);
-  useEffect(() => {
-    axios.get("https://api.escuelajs.co/api/v1/categories").then((display) => {
-      console.log(display);
-      setCategory(display.data);
+   
     });
   }, []);
   return (
     <>
-      <Newcontext.Provider value={[products,category]}>
+      <Newcontext.Provider value={[products]}>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -35,9 +31,10 @@ function App() {
             <Route path="/view/:index" element={<ProductDetails />}></Route>
             <Route path="/category/:index" element={<CategoryList />}></Route>
             <Route path="/category" element={<Category />}></Route>
-            <Route path="/users" element={<Category />}></Route>
+            <Route path="/users" element={<Users/>}></Route>
           </Routes>
         </BrowserRouter>
+        <Footer />
       </Newcontext.Provider>
     </>
   );
